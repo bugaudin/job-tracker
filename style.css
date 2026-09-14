@@ -1,0 +1,182 @@
+:root{
+  --bg:#f7f8fa; --card:#fff; --ink:#1c2330; --muted:#6b7686; --line:#e3e7ee;
+  --live:#0a7d4b; --live-bg:#e7f6ee;
+  --wait:#8a6100; --wait-bg:#fdf3df;
+  --dead:#8a2b2b; --dead-bg:#fbeded;
+  --accent:#2b5bd7;
+}
+*{box-sizing:border-box}
+body{margin:0;padding:28px 32px 60px;background:var(--bg);color:var(--ink);
+     font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+h1{margin:0 0 14px;font-size:22px;letter-spacing:-.01em}
+header{margin-bottom:18px}
+
+.tally{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.pill{display:inline-flex;gap:7px;align-items:center;padding:5px 12px;border-radius:999px;
+      background:var(--card);border:1px solid var(--line);color:var(--muted);
+      text-decoration:none;font-size:13px}
+.pill b{color:var(--ink)}
+.pill:hover{border-color:#c9d1dd}
+.pill.on{border-color:var(--accent);color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+.pill.s-interviewing{color:var(--live)} .pill.s-interviewing b{color:var(--live)}
+.pill.s-rejected{color:var(--dead)}     .pill.s-rejected b{color:var(--dead)}
+.pill.iv b{color:var(--accent)}
+
+.search{display:flex;gap:8px;align-items:center}
+.search input[type=search]{flex:0 1 340px;padding:7px 11px;border:1px solid var(--line);
+                           border-radius:7px;background:var(--card);font-size:13px}
+.search button{padding:7px 14px;border:1px solid var(--line);border-radius:7px;
+               background:var(--card);cursor:pointer;font-size:13px}
+.search button:hover{border-color:#c9d1dd}
+.clear{color:var(--muted);font-size:13px;text-decoration:none}
+
+.addbox{margin:0 0 16px;background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 14px}
+.addbox summary{cursor:pointer;color:var(--accent);font-size:13px;font-weight:500}
+.addbox form{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.addbox input,.addbox select{padding:7px 10px;border:1px solid var(--line);border-radius:7px;font-size:13px}
+.addbox input[name=company]{min-width:180px} .addbox input[name=roles],.addbox input[name=notes]{min-width:220px}
+.addbox .cb{display:flex;align-items:center;gap:5px;color:var(--muted);font-size:13px}
+.addbox button{padding:7px 18px;border:0;border-radius:7px;background:var(--accent);color:#fff;cursor:pointer}
+
+table{width:100%;border-collapse:separate;border-spacing:0;background:var(--card);
+      border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:middle}
+th{background:#fbfcfd;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:#fafbfc}
+td.c,th.c{text-align:center} td.nw{white-space:nowrap}
+td.links{white-space:normal}
+.muted{color:var(--muted)} .small{font-size:12px} .b{font-weight:600}
+i{color:#aeb6c2;font-style:normal}
+
+tr.st-interviewing td:first-child{box-shadow:inset 3px 0 0 var(--live)}
+tr.st-offer td:first-child{box-shadow:inset 3px 0 0 var(--live)}
+tr.st-rejected{opacity:.62}
+tr.st-rejected td:first-child{box-shadow:inset 3px 0 0 #d9a5a5}
+
+select.status{padding:4px 8px;border:1px solid var(--line);border-radius:6px;background:var(--card);
+              font-size:12.5px;max-width:190px}
+tr.st-interviewing select.status{color:var(--live);background:var(--live-bg);border-color:#bfe3d0}
+tr.st-applied select.status{color:var(--wait);background:var(--wait-bg);border-color:#eddcb4}
+tr.st-rejected select.status{color:var(--dead);background:var(--dead-bg);border-color:#eecccc}
+
+.ed{cursor:text;border-bottom:1px dashed transparent;padding-bottom:1px}
+.ed:hover{border-bottom-color:#c3cbd8}
+.note{display:block;white-space:pre-wrap;word-break:normal;overflow-wrap:break-word;min-height:1.2em}
+
+textarea.inline{width:100%;min-height:58px;padding:5px 7px;border:1px solid var(--accent);
+                border-radius:6px;font:inherit;font-size:13px;resize:vertical;line-height:1.45}
+.hint{display:block;margin-top:3px;font-size:11px;color:var(--muted)}
+input.inline{width:100%;min-width:120px;padding:4px 7px;border:1px solid var(--accent);
+             border-radius:6px;font-size:13px;font-family:inherit}
+
+.saved{animation:flash .9s ease} .failed{animation:shake .3s ease}
+@keyframes flash{0%{background:#d9f2e3}100%{background:transparent}}
+@keyframes shake{25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+
+button.del{border:0;background:none;color:#c3cbd8;font-size:18px;line-height:1;cursor:pointer;padding:0 4px}
+button.del:hover{color:var(--dead)}
+.empty{color:var(--muted);padding:24px 4px}
+
+.sal{display:inline-block;min-width:64px;font-variant-numeric:tabular-nums}
+.addbox input[name=requested_salary]{min-width:130px}
+tr.st-cv select.status{color:var(--muted);background:#f2f4f7;border-color:#dbe1ea}
+
+/* Links wrap onto a second line rather than spilling into the next column. */
+.links{white-space:normal;font-size:12px;line-height:1.7}
+.links a{color:var(--accent);text-decoration:none;margin-right:7px}
+.links a:hover{text-decoration:underline}
+.links a.folder{color:#7a5a00}
+.links a.post{color:var(--live)}
+.links .ed.url{color:#aeb6c2;font-size:11px}
+.links .ed.url:hover{color:var(--accent)}
+/* ---------------------------------------------------------------------------
+   Column sizing -- ONE block, deliberately.
+
+   There were three generations of these rules stacked on top of each other
+   (a px set, a % set added with the salary column, then a third set of
+   nth-child overrides after .links), each silently beating the one above by
+   source order. Widths could not be reasoned about, only guessed at. Any
+   change to a column width belongs HERE and nowhere else in this file.
+
+   Ten columns: company, role, salary, applied, status, interviewed, notes,
+   links, updated, delete. Everything but NOTES is sized to its content; notes
+   is `auto` so it absorbs all remaining width.
+--------------------------------------------------------------------------- */
+table{table-layout:fixed}
+th:nth-child(1) ,td:nth-child(1) {width:120px}   /* company     */
+th:nth-child(2) ,td:nth-child(2) {width:150px}   /* role -- hard cap, see .role below */
+th:nth-child(3) ,td:nth-child(3) {width:72px}    /* salary asked */
+th:nth-child(4) ,td:nth-child(4) {width:92px}    /* applied     */
+th:nth-child(5) ,td:nth-child(5) {width:194px}   /* status -- fits the longest option, "CV prepared - not submitted" */
+th:nth-child(6) ,td:nth-child(6) {width:44px}   /* interviewed -- header shortened to IV (title="Interviewed"); the word cost 56px above a checkbox */
+th:nth-child(7) ,td:nth-child(7) {width:auto}    /* NOTES -- takes every remaining pixel */
+th:nth-child(8) ,td:nth-child(8) {width:124px}   /* links -- post/form/mail/docs + two edit affordances, wraps to 2 lines */
+th:nth-child(9) ,td:nth-child(9) {width:88px}    /* updated -- a full ISO date plus padding */
+th:nth-child(10),td:nth-child(10){width:34px}    /* delete      */
+
+td{vertical-align:top}
+/* Headers wrap and break. `white-space:nowrap` (the old rule) made a header
+   wider than its column and it silently overlapped the next one -- INTERVIEWED
+   ran straight through NOTES. With table-layout:fixed nothing reflows to
+   rescue it, so the header must be allowed to wrap. */
+th{vertical-align:bottom;white-space:normal;overflow-wrap:normal;line-height:1.2}
+td.c,td.nw{vertical-align:middle}
+th.c{text-align:center}
+td .ed{display:inline-block;max-width:100%;overflow-wrap:anywhere}
+select.status{width:100%;max-width:100%}
+
+/* Role: clipped to the 150px column, full text on hover.
+   Two mechanisms on purpose -- the `title` attribute (native tooltip, survives
+   keyboard focus and screen readers) and the floating panel below (readable
+   immediately, no half-second tooltip delay). The panel is the SAME element,
+   so clicking it still opens the inline editor that app.js binds to `.ed`. */
+td.role{position:relative}
+td.role .ed{display:block;max-width:150px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+td.role:hover .ed{position:absolute;z-index:6;left:8px;top:3px;width:max-content;max-width:360px;
+                  white-space:normal;overflow:visible;background:var(--card);
+                  border:1px solid var(--accent);border-radius:6px;padding:5px 8px;
+                  box-shadow:0 6px 18px rgba(28,35,48,.14)}
+
+/* ---------------------------------------------------------------------------
+   Notes -- the only long-prose field here, and the reason this table exists.
+
+   It was one unbroken 600-character paragraph in a narrow column, clamped to
+   three lines: a wall. note_html() (config.php) now splits it into blocks on
+   the separators the text already contains -- " | " between appended entries
+   and any newline Ben typed -- and picks out a leading ALL-CAPS label. The CSS
+   below gives those blocks room to read as prose: looser leading, space between
+   entries, and eight lines before it clamps instead of three.
+--------------------------------------------------------------------------- */
+td.notes{padding-right:16px}
+.note{display:block;max-width:100%;max-height:18em;overflow:hidden;position:relative;
+      font-size:13px;line-height:1.6;text-align:left;overflow-wrap:break-word;hyphens:none}
+.note .np{display:block;margin:0 0 .5em}
+.note .np:last-child{margin-bottom:0}
+.note .lbl{font-weight:600;color:var(--ink);letter-spacing:.01em}
+.note .lbl.next{color:var(--live)}
+.note .np.nextline{color:var(--live)}
+/* Fade the cut edge so a clamped note reads as "there is more", not as a note
+   that happens to end mid-sentence. */
+.note::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.9em;pointer-events:none;
+             background:linear-gradient(to bottom,rgba(255,255,255,0),var(--card) 88%)}
+.note:hover{max-height:none}
+.note:hover::after{display:none}
+tbody tr:hover .note::after{background:linear-gradient(to bottom,rgba(250,251,252,0),#fafbfc 88%)}
+.note i{font-size:13px}
+
+.crumb{margin:0 0 8px}.crumb a{color:var(--accent);text-decoration:none;font-size:13px}
+.slug{font-size:13px;color:var(--muted);font-weight:600;margin:22px 0 4px}
+.path{margin:0 0 10px;font:12px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);
+      background:var(--card);border:1px solid var(--line);border-radius:6px;padding:6px 9px;
+      display:inline-block;user-select:all}
+ul.files{list-style:none;margin:0;padding:0;max-width:560px}
+ul.files li{display:flex;justify-content:space-between;gap:16px;padding:7px 11px;background:var(--card);
+            border:1px solid var(--line);border-bottom:0;font-size:13px}
+ul.files li:first-child{border-radius:8px 8px 0 0}
+ul.files li:last-child{border-bottom:1px solid var(--line);border-radius:0 0 8px 8px}
+ul.files a{color:var(--accent);text-decoration:none}
+ul.files a:hover{text-decoration:underline}
+
+/* the interview prep brief - the link you want on the morning of a call */
+.links a.prep{color:var(--live);font-weight:600}

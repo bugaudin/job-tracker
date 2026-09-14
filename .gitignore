@@ -1,0 +1,13 @@
+# Machine-local configuration: database credentials and the absolute path to the
+# document repository. Copy config.example.php to config.php on a new machine.
+config.php
+
+# MySQL dumps of the live table and older copies of the app. These contain real
+# application history: company names, interview notes, correspondence links.
+backup/
+*.sql
+!schema.sql
+
+# OS noise
+.DS_Store
+**/.DS_Store
