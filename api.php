@@ -8,7 +8,7 @@ try {
         $id     = (int)($_POST['id'] ?? 0);
         $field  = $_POST['field'] ?? '';
         $value  = $_POST['value'] ?? '';
-        $allowed = ['company','roles','requested_salary','apply_url','posting_url','email_url','prep_url','applied','status','interviewed','notes','folders'];
+        $allowed = ['company','roles','requested_salary','apply_url','posting_url','email_url','prep_url','stack_url','applied','status','interviewed','notes','folders'];
         if (!in_array($field, $allowed, true)) {
             throw new RuntimeException('Field not editable: ' . $field);
         }

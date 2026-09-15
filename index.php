@@ -101,6 +101,9 @@ $ivTotal = (int)db()->query('SELECT COUNT(*) FROM applications WHERE interviewed
       <?php if (($r['prep_url'] ?? '') !== ''): ?>
         <a href="<?= e($r['prep_url']) ?>" target="_blank" rel="noopener" class="prep" title="<?= e($r['prep_url']) ?>">prep</a>
       <?php endif; ?>
+      <?php if (($r['stack_url'] ?? '') !== ''): ?>
+        <a href="<?= e($r['stack_url']) ?>" target="_blank" rel="noopener" class="prep" title="<?= e($r['stack_url']) ?>">stack</a>
+      <?php endif; ?>
       <?php if ($r['folders'] !== ''): ?>
         <a href="docs.php?id=<?= (int)$r['id'] ?>" class="folder" title="Open cv-custom/<?= e(strtok($r['folders'],' ')) ?>">docs</a>
       <?php endif; ?>
@@ -108,6 +111,7 @@ $ivTotal = (int)db()->query('SELECT COUNT(*) FROM applications WHERE interviewed
       <span class="ed url" data-field="apply_url" title="<?= e($r['apply_url']) ?>"><?= $r['apply_url'] !== '' ? 'edit form' : '<i>+ form</i>' ?></span>
       <span class="ed url" data-field="email_url" title="<?= e($r['email_url'] ?? '') ?>"><?= ($r['email_url'] ?? '') !== '' ? 'edit mail' : '<i>+ mail</i>' ?></span>
       <span class="ed url" data-field="prep_url" title="<?= e($r['prep_url'] ?? '') ?>"><?= ($r['prep_url'] ?? '') !== '' ? 'edit prep' : '<i>+ prep</i>' ?></span>
+      <span class="ed url" data-field="stack_url" title="<?= e($r['stack_url'] ?? '') ?>"><?= ($r['stack_url'] ?? '') !== '' ? 'edit stack' : '<i>+ stack</i>' ?></span>
     </td>
     <td class="nw muted small upd"><?= e($r['last_update']) ?></td>
     <td class="c"><button class="del" title="Delete">&times;</button></td>

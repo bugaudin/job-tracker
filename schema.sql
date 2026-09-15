@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS `applications` (
   `posting_url`      varchar(500) DEFAULT NULL,          -- the job description
   `email_url`        varchar(500) DEFAULT NULL,          -- the confirmation mail
   `prep_url`         varchar(500) NOT NULL DEFAULT '',   -- interview prep doc
+  `stack_url`        varchar(500) NOT NULL DEFAULT '',   -- tech-stack glossary for the round
   `applied`          date DEFAULT NULL,
   `status`           enum('Interviewing',
                           'Applied - awaiting reply',
